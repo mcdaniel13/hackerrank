@@ -1,20 +1,19 @@
-// author: Moongee Cho
-// date: 03/01/2019
 #include <bits/stdc++.h>
 
 using namespace std;
 
 vector<int> ways;
-
+// Complete the stepPerms function below.
 int stepPerms(int n) {
-    ways.resize(n + 3);
+    ways.resize(37);
 
     ways[0] = 1;
     ways[1] = 1;
     ways[2] = 2;
 
-    if(n >= 3)
-        ways[n] = stepPerms(n - 3) + stepPerms(n - 2) + stepPerms(n - 1);
+    for(int i = 3; i <= 36; i++) {
+        ways[i] = ways[i - 3] + ways[i - 2] + ways[i - 1];
+    }
 
     return ways[n];
 }
